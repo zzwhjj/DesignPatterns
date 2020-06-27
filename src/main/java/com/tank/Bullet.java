@@ -6,7 +6,8 @@ import java.awt.Graphics;
 public class Bullet {
 
     private static final int SPEED = 10;
-    private static int WIDTH = 5, HEIGHT = 5;
+    public static int WIDTH = ResourceMgr.bulletD.getWidth();
+    public static int HEIGHT = ResourceMgr.bulletD.getHeight();
     private boolean live = true;
     private TankFrame tf = null;
 

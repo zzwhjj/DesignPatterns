@@ -1,7 +1,7 @@
 package com.tank;
 
-import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 public class Tank {
 
@@ -9,6 +9,8 @@ public class Tank {
     private Dir dir = Dir.DOWN;
     final int SPEED = 5;
     private boolean moving = false;
+    public static int WIDTH = ResourceMgr.tankD.getWidth();
+    public static int HEIGHT = ResourceMgr.tankD.getHeight();
 
     private TankFrame tf = null;
 
@@ -64,7 +66,9 @@ public class Tank {
     }
 
     public void fire() {
-        tf.bullets.add(new Bullet(this.x, this.y, this.dir, tf));
+        int bX = this.x + Tank.WIDTH / 2 - Bullet.WIDTH / 2;
+        int bY = this.y + Tank.HEIGHT / 2 - Bullet.HEIGHT / 2;
+        tf.bullets.add(new Bullet(bX, bY, this.dir, tf));
     }
 
     public int getX() {
