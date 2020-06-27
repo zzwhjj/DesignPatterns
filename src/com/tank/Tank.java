@@ -1,5 +1,6 @@
 package com.tank;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Tank {
@@ -16,7 +17,10 @@ public class Tank {
     }
 
     public void paint(Graphics graphics) {
+        Color color = graphics.getColor();
+        graphics.setColor(Color.YELLOW);
         graphics.fillRect(x, y, 50, 50);
+        graphics.setColor(color);
 
         if (moving) {
             move();
