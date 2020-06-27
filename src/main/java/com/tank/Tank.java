@@ -20,7 +20,22 @@ public class Tank {
     }
 
     public void paint(Graphics graphics) {
-        graphics.drawImage(ResourceMgr.tankL, x, y, null);
+        switch (dir) {
+            case LEFT:
+                graphics.drawImage(ResourceMgr.tankL, x, y, null);
+                break;
+            case UP:
+                graphics.drawImage(ResourceMgr.tankU, x, y, null);
+                break;
+            case RIGHT:
+                graphics.drawImage(ResourceMgr.tankR, x, y, null);
+                break;
+            case DOWN:
+                graphics.drawImage(ResourceMgr.tankD, x, y, null);
+                break;
+            default:
+                break;
+        }
 
         move();
     }
