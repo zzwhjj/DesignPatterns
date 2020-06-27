@@ -53,8 +53,8 @@ public class TankFrame extends Frame {
     public void paint(Graphics graphics) {
         myTank.paint(graphics);
 
-        for (Bullet b : bullets) {
-            b.paint(graphics);
+        for (int i = 0; i < bullets.size(); i++) {
+            bullets.get(i).paint(graphics);
         }
     }
 
