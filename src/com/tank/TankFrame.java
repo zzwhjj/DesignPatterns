@@ -30,7 +30,7 @@ public class TankFrame extends Frame {
     @Override
     public void paint(Graphics graphics) {
         graphics.fillRect(x, y, 50, 50);
-        x += 10;
+        //x += 10;
         //y += 10;
     }
 
@@ -38,6 +38,23 @@ public class TankFrame extends Frame {
 
         @Override
         public void keyPressed(KeyEvent e) {
+            int key = e.getKeyCode();
+            switch (key) {
+                case KeyEvent.VK_LEFT:
+                    x -= 10;
+                    break;
+                case KeyEvent.VK_UP:
+                    y -= 10;
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    x += 10;
+                    break;
+                case KeyEvent.VK_DOWN:
+                    y += 10;
+                    break;
+                default:
+                    break;
+            }
             //x += 200;
            // repaint();
         }
