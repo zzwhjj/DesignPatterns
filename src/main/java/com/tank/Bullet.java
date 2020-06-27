@@ -2,13 +2,14 @@ package com.tank;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Bullet {
 
     private static final int SPEED = 10;
     public static int WIDTH = ResourceMgr.bulletD.getWidth();
     public static int HEIGHT = ResourceMgr.bulletD.getHeight();
-    private boolean live = true;
+    private boolean living = true;
     private TankFrame tf = null;
 
     private int x, y;
@@ -22,7 +23,7 @@ public class Bullet {
     }
 
     public void paint(Graphics graphics) {
-        if (!live) {
+        if (!living) {
             tf.bullets.remove(this);
         }
 
@@ -64,7 +65,21 @@ public class Bullet {
                 break;
         }
         if (x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) {
-            live = false;
+            living = false;
         }
+    }
+
+    public void collideWith(Tank tank) {
+        Rectangle rect1 = new Rectangle(this.x, this.y, WIDTH, HEIGHT);
+        Rectangle rect2 = new Rectangle(tank.getX(), tank.getY(), Tank.WIDTH, Tank.HEIGHT);
+
+        if (rect1.intersects(rect2)) {
+            tank.die();
+            this.die();
+        }
+    }
+
+    private void die() {
+        this.living = false;
     }
 }
