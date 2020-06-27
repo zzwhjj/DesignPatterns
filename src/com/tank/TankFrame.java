@@ -8,11 +8,13 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TankFrame extends Frame {
 
-    Tank myTank = new Tank(200, 200, Dir.DOWN);
-    Bullet bullet = new Bullet(300, 300, Dir.DOWN);
+    Tank myTank = new Tank(200, 200, Dir.DOWN, this);
+    List<Bullet> bullets = new ArrayList<>();
     static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
 
     public TankFrame() {
@@ -51,7 +53,9 @@ public class TankFrame extends Frame {
     public void paint(Graphics graphics) {
         myTank.paint(graphics);
 
-        bullet.paint(graphics);
+        for (Bullet b : bullets) {
+            b.paint(graphics);
+        }
     }
 
     class MyKeyListener extends KeyAdapter {
@@ -100,6 +104,9 @@ public class TankFrame extends Frame {
                     break;
                 case KeyEvent.VK_DOWN:
                     bD = false;
+                    break;
+                case KeyEvent.VK_CONTROL:
+                    myTank.fire();
                     break;
                 default:
                     break;
