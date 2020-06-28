@@ -10,8 +10,10 @@ public class Main {
             frame.tanks.add(new Tank(50 + i * 80, 200, Dir.DOWN, Group.BAD, frame));
         }
 
+        //new Thread(()->new Audio("audio/war1.wav").loop()).start();
+
         while (true) {
-            Thread.sleep(50);
+            Thread.sleep(25);
             frame.repaint();
         }
     }

@@ -9,8 +9,8 @@ public class Tank {
     private Dir dir = Dir.DOWN;
     final int SPEED = 1;
     private boolean moving = true;
-    public static int WIDTH = ResourceMgr.tankD.getWidth();
-    public static int HEIGHT = ResourceMgr.tankD.getHeight();
+    public static int WIDTH = ResourceMgr.goodTankD.getWidth();
+    public static int HEIGHT = ResourceMgr.goodTankD.getHeight();
     private boolean living = true;
 
     private TankFrame tf = null;
@@ -32,16 +32,16 @@ public class Tank {
 
         switch (dir) {
             case LEFT:
-                graphics.drawImage(ResourceMgr.tankL, x, y, null);
+                graphics.drawImage(ResourceMgr.goodTankL, x, y, null);
                 break;
             case UP:
-                graphics.drawImage(ResourceMgr.tankU, x, y, null);
+                graphics.drawImage(ResourceMgr.goodTankU, x, y, null);
                 break;
             case RIGHT:
-                graphics.drawImage(ResourceMgr.tankR, x, y, null);
+                graphics.drawImage(ResourceMgr.goodTankR, x, y, null);
                 break;
             case DOWN:
-                graphics.drawImage(ResourceMgr.tankD, x, y, null);
+                graphics.drawImage(ResourceMgr.goodTankD, x, y, null);
                 break;
             default:
                 break;
