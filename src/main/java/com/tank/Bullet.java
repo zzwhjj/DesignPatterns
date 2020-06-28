@@ -16,12 +16,19 @@ public class Bullet {
     private Dir dir;
     private Group group = Group.BAD;
 
+    Rectangle rect = new Rectangle();
+
     public Bullet(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
         this.tf = tf;
+
+        rect.x = this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
 
     public void paint(Graphics graphics) {
@@ -66,6 +73,12 @@ public class Bullet {
             default:
                 break;
         }
+
+        //update rect
+        rect.x = this.x;
+        rect.y = this.y;
+
+        //子弹超出边界标记为死亡
         if (x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) {
             living = false;
         }
@@ -76,10 +89,7 @@ public class Bullet {
             return;
         }
 
-        Rectangle rect1 = new Rectangle(this.x, this.y, WIDTH, HEIGHT);
-        Rectangle rect2 = new Rectangle(tank.getX(), tank.getY(), Tank.WIDTH, Tank.HEIGHT);
-
-        if (rect1.intersects(rect2)) {
+        if (rect.intersects(tank.rect)) {
             tank.die();
             this.die();
 

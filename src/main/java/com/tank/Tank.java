@@ -1,10 +1,12 @@
 package com.tank;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.Random;
 
 public class Tank {
 
+    public Rectangle rect = new Rectangle();
     private int x, y;
     private Dir dir = Dir.DOWN;
     final int SPEED = 1;
@@ -23,6 +25,11 @@ public class Tank {
         this.dir = dir;
         this.group = group;
         this.tf = tf;
+
+        rect.x = this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
 
     public void paint(Graphics graphics) {
@@ -80,10 +87,15 @@ public class Tank {
                 break;
         }
 
+        rect.x = this.x;
+        rect.y = this.y;
+
+        //敌方坦克自由开火
         if (this.group == Group.BAD && random.nextInt(100) > 95) {
             this.fire();
         }
 
+        //敌方坦克方向随机
         if (this.group == Group.BAD && random.nextInt(10) > 8) {
             randomDir();
         }
