@@ -1,14 +1,13 @@
 package com.tank;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class Tank {
 
     private int x, y;
     private Dir dir = Dir.DOWN;
-    final int SPEED = 5;
+    final int SPEED = 1;
     private boolean moving = true;
     public static int WIDTH = ResourceMgr.tankD.getWidth();
     public static int HEIGHT = ResourceMgr.tankD.getHeight();
