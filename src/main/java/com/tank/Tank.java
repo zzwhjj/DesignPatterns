@@ -32,32 +32,24 @@ public class Tank {
 
         switch (dir) {
             case LEFT:
-                if (this.group == Group.GOOD) {
-                    graphics.drawImage(ResourceMgr.goodTankL, x, y, null);
-                } else {
-                    graphics.drawImage(ResourceMgr.badTankL, x, y, null);
-                }
+                graphics.drawImage(
+                    this.group == Group.GOOD ? ResourceMgr.goodTankL : ResourceMgr.badTankL, x, y,
+                    null);
                 break;
             case UP:
-                if (this.group == Group.GOOD) {
-                    graphics.drawImage(ResourceMgr.goodTankU, x, y, null);
-                } else {
-                    graphics.drawImage(ResourceMgr.badTankU, x, y, null);
-                }
+                graphics.drawImage(
+                    this.group == Group.GOOD ? ResourceMgr.goodTankU : ResourceMgr.badTankU, x, y,
+                    null);
                 break;
             case RIGHT:
-                if (this.group == Group.GOOD) {
-                    graphics.drawImage(ResourceMgr.goodTankR, x, y, null);
-                } else {
-                    graphics.drawImage(ResourceMgr.badTankR, x, y, null);
-                }
+                graphics.drawImage(
+                    this.group == Group.GOOD ? ResourceMgr.goodTankR : ResourceMgr.badTankR, x, y,
+                    null);
                 break;
             case DOWN:
-                if (this.group == Group.GOOD) {
-                    graphics.drawImage(ResourceMgr.goodTankD, x, y, null);
-                } else {
-                    graphics.drawImage(ResourceMgr.badTankD, x, y, null);
-                }
+                graphics.drawImage(
+                    this.group == Group.GOOD ? ResourceMgr.goodTankD : ResourceMgr.badTankD, x, y,
+                    null);
                 break;
             default:
                 break;
@@ -94,6 +86,24 @@ public class Tank {
 
         if (this.group == Group.BAD && random.nextInt(10) > 8) {
             randomDir();
+        }
+
+        boundsCheck();
+    }
+
+    //边界检测
+    private void boundsCheck() {
+        if (this.x < 2) {
+            x = 2;
+        }
+        if (this.y < 28) {
+            y = 28;
+        }
+        if (this.x > TankFrame.GAME_WIDTH - Tank.WIDTH - 2) {
+            x = TankFrame.GAME_WIDTH - Tank.WIDTH - 2;
+        }
+        if (this.y > TankFrame.GAME_HEIGHT - Tank.HEIGHT - 2) {
+            y = TankFrame.GAME_HEIGHT - Tank.HEIGHT - 2;
         }
     }
 
