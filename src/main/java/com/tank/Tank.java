@@ -87,20 +87,20 @@ public class Tank {
                 break;
         }
 
-        rect.x = this.x;
-        rect.y = this.y;
-
         //敌方坦克自由开火
         if (this.group == Group.BAD && random.nextInt(100) > 95) {
             this.fire();
         }
 
         //敌方坦克方向随机
-        if (this.group == Group.BAD && random.nextInt(10) > 8) {
+        if (this.group == Group.BAD && random.nextInt(100) > 95) {
             randomDir();
         }
 
         boundsCheck();
+
+        rect.x = this.x;
+        rect.y = this.y;
     }
 
     //边界检测
