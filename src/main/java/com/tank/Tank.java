@@ -32,16 +32,32 @@ public class Tank {
 
         switch (dir) {
             case LEFT:
-                graphics.drawImage(ResourceMgr.goodTankL, x, y, null);
+                if (this.group == Group.GOOD) {
+                    graphics.drawImage(ResourceMgr.goodTankL, x, y, null);
+                } else {
+                    graphics.drawImage(ResourceMgr.badTankL, x, y, null);
+                }
                 break;
             case UP:
-                graphics.drawImage(ResourceMgr.goodTankU, x, y, null);
+                if (this.group == Group.GOOD) {
+                    graphics.drawImage(ResourceMgr.goodTankU, x, y, null);
+                } else {
+                    graphics.drawImage(ResourceMgr.badTankU, x, y, null);
+                }
                 break;
             case RIGHT:
-                graphics.drawImage(ResourceMgr.goodTankR, x, y, null);
+                if (this.group == Group.GOOD) {
+                    graphics.drawImage(ResourceMgr.goodTankR, x, y, null);
+                } else {
+                    graphics.drawImage(ResourceMgr.badTankR, x, y, null);
+                }
                 break;
             case DOWN:
-                graphics.drawImage(ResourceMgr.goodTankD, x, y, null);
+                if (this.group == Group.GOOD) {
+                    graphics.drawImage(ResourceMgr.goodTankD, x, y, null);
+                } else {
+                    graphics.drawImage(ResourceMgr.badTankD, x, y, null);
+                }
                 break;
             default:
                 break;
@@ -72,9 +88,18 @@ public class Tank {
                 break;
         }
 
-        if (random.nextInt(10) > 8) {
+        if (this.group == Group.BAD && random.nextInt(100) > 95) {
             this.fire();
         }
+
+        if (this.group == Group.BAD && random.nextInt(10) > 8) {
+            randomDir();
+        }
+    }
+
+    //为坦克生成随机方向
+    private void randomDir() {
+        this.dir = Dir.values()[random.nextInt(4)];
     }
 
     public void fire() {
