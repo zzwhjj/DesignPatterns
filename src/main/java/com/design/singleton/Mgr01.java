@@ -1,4 +1,4 @@
-package com.design;
+package com.design.singleton;
 
 /**
  * 饿汉式

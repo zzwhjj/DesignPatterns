@@ -1,4 +1,4 @@
-package com.design;
+package com.design.singleton;
 
 /**
  * 懒汉式
@@ -7,13 +7,11 @@ package com.design;
  */
 public class Mgr06 {
 
-    private static Mgr06 INSTANCE;
+    private static volatile Mgr06 INSTANCE;
 
     private Mgr06() {
     }
-
-    ;
-
+    
     public static Mgr06 getInstance() {
         if (INSTANCE == null) {
             //双重检查

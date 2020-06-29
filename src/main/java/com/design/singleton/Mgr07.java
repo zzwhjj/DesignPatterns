@@ -1,4 +1,4 @@
-package com.design;
+package com.design.singleton;
 
 /**
  * 静态内部类
