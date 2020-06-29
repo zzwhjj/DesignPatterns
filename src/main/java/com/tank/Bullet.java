@@ -29,6 +29,9 @@ public class Bullet {
         rect.y = this.y;
         rect.width = WIDTH;
         rect.height = HEIGHT;
+
+        //子弹创建后，加入到队列中
+        tf.bullets.add(this);
     }
 
     public void paint(Graphics graphics) {
