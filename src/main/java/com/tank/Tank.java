@@ -18,7 +18,7 @@ public class Tank extends BaseTank {
     public static int HEIGHT = ResourceMgr.goodTankD.getHeight();
     private boolean living = true;
 
-    private TankFrame tf = null;
+    public TankFrame tf = null;
     private Random random = new Random();
     private Group group = Group.BAD;
 

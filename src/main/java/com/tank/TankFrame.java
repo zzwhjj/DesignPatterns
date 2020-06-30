@@ -1,6 +1,8 @@
 package com.tank;
 
+import com.tank.abstractfactory.BaseBullet;
 import com.tank.abstractfactory.BaseExplode;
+import com.tank.abstractfactory.BaseTank;
 import com.tank.abstractfactory.DefaultFactory;
 import com.tank.abstractfactory.GameFactory;
 import com.tank.abstractfactory.RectFactory;
@@ -18,13 +20,13 @@ import java.util.List;
 public class TankFrame extends Frame {
 
     Tank myTank = new Tank(200, 500, Dir.DOWN, Group.GOOD,this);
-    public List<Bullet> bullets = new ArrayList<>();
+    public List<BaseBullet> bullets = new ArrayList<>();
     public List<Tank> tanks = new ArrayList<>();
     public List<BaseExplode> explodes = new ArrayList<>();
 
-    GameFactory gf = new RectFactory();
+    public GameFactory gf = new RectFactory();
 
-    static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
+    public static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
 
     public TankFrame() {
         setSize(GAME_WIDTH, GAME_HEIGHT);
