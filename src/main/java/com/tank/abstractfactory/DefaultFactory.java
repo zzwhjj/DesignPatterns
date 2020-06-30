@@ -11,12 +11,13 @@ public class DefaultFactory extends GameFactory{
 
     @Override
     public BaseTank createTank(int x, int y, Dir dir, Group group, TankFrame frame) {
-        return new Tank(x, y, dir, group, frame);
+        //return new Tank(x, y, dir, group, frame);
+        return null;
     }
 
     @Override
     public BaseExplode createExplode(int x, int y, TankFrame frame) {
-        return new Explode(x, y, frame);
+        return null;// new Explode(x, y, frame);
     }
 
     @Override

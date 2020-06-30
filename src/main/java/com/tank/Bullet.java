@@ -11,6 +11,7 @@ public class Bullet extends BaseBullet {
     public static int WIDTH = ResourceMgr.bulletD.getWidth();
     public static int HEIGHT = ResourceMgr.bulletD.getHeight();
     private boolean living = true;
+    GameModel gm = null;
     private TankFrame tf = null;
 
     private int x, y;
@@ -19,12 +20,12 @@ public class Bullet extends BaseBullet {
 
     Rectangle rect = new Rectangle();
 
-    public Bullet(int x, int y, Dir dir, Group group, TankFrame tf) {
+    public Bullet(int x, int y, Dir dir, Group group, GameModel gm) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
-        this.tf = tf;
+        this.gm = gm;
 
         rect.x = this.x;
         rect.y = this.y;
@@ -32,13 +33,13 @@ public class Bullet extends BaseBullet {
         rect.height = HEIGHT;
 
         //子弹创建后，加入到队列中
-        tf.bullets.add(this);
+        gm.bullets.add(this);
     }
 
     @Override
     public void paint(Graphics graphics) {
         if (!living) {
-            tf.bullets.remove(this);
+            gm.bullets.remove(this);
         }
 
         switch (dir) {
@@ -100,7 +101,7 @@ public class Bullet extends BaseBullet {
 
             int ex = tank.getX() + Tank.WIDTH / 2 - Explode.WIDTH / 2;
             int ey = tank.getY() + Tank.HEIGHT / 2 - Explode.HEIGHT / 2;
-            tf.explodes.add(tf.gf.createExplode(ex, ey, tf));
+            gm.explodes.add(new Explode(ex, ey, gm));
         }
     }
 

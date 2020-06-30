@@ -37,13 +37,13 @@ public class RectBullet extends BaseBullet {
         rect.height = HEIGHT;
 
         //子弹创建后，加入到队列中
-        tf.bullets.add(this);
+        //tf.bullets.add(this);
     }
 
     @Override
     public void paint(Graphics graphics) {
         if (!living) {
-            tf.bullets.remove(this);
+            //tf.bullets.remove(this);
         }
         /*
         switch (dir) {
@@ -110,7 +110,7 @@ public class RectBullet extends BaseBullet {
 
             int ex = tank.getX() + Tank.WIDTH / 2 - Explode.WIDTH / 2;
             int ey = tank.getY() + Tank.HEIGHT / 2 - Explode.HEIGHT / 2;
-            tf.explodes.add(tf.gf.createExplode(ex, ey, tf));
+            //tf.explodes.add(tf.gf.createExplode(ex, ey, tf));
         }
     }
 

@@ -30,7 +30,7 @@ public class RectExplode extends BaseExplode {
         graphics.fillRect(x, y, 10 * step, 10 * step);
         step++;
         if (step >= 5) {
-            tf.explodes.remove(this);
+            //tf.explodes.remove(this);
         }
         graphics.setColor(color);
     }

@@ -18,18 +18,18 @@ public class Tank extends BaseTank {
     public static int HEIGHT = ResourceMgr.goodTankD.getHeight();
     private boolean living = true;
 
-    public TankFrame tf = null;
+    public GameModel gm = null;
     private Random random = new Random();
     private Group group = Group.BAD;
 
     private FireStrategy fireStrategy;
 
-    public Tank(int x, int y, Dir dir, Group group, TankFrame tf) {
+    public Tank(int x, int y, Dir dir, Group group, GameModel gm) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
-        this.tf = tf;
+        this.gm = gm;
 
         rect.x = this.x;
         rect.y = this.y;
@@ -58,7 +58,7 @@ public class Tank extends BaseTank {
 
     public void paint(Graphics graphics) {
         if (!living) {
-            tf.tanks.remove(this);
+            gm.tanks.remove(this);
         }
 
         switch (dir) {
@@ -200,13 +200,5 @@ public class Tank extends BaseTank {
 
     public void setGroup(Group group) {
         this.group = group;
-    }
-
-    public TankFrame getTf() {
-        return tf;
-    }
-
-    public void setTf(TankFrame tf) {
-        this.tf = tf;
     }
 }

@@ -19,12 +19,7 @@ import java.util.List;
 
 public class TankFrame extends Frame {
 
-    Tank myTank = new Tank(200, 500, Dir.DOWN, Group.GOOD,this);
-    public List<BaseBullet> bullets = new ArrayList<>();
-    public List<Tank> tanks = new ArrayList<>();
-    public List<BaseExplode> explodes = new ArrayList<>();
-
-    public GameFactory gf = new RectFactory();
+    GameModel gm = new GameModel();
 
     public static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
 
@@ -62,34 +57,7 @@ public class TankFrame extends Frame {
 
     @Override
     public void paint(Graphics graphics) {
-        Color color = graphics.getColor();
-        graphics.setColor(Color.WHITE);
-        graphics.drawString("子弹的数量：" + bullets.size(), 10, 60);
-        graphics.drawString("敌人的数量：" + tanks.size(), 10, 80);
-        graphics.drawString("爆炸的数量：" + explodes.size(), 10, 100);
-        graphics.setColor(color);
-
-        myTank.paint(graphics);
-
-        for (int i = 0; i < bullets.size(); i++) {
-            bullets.get(i).paint(graphics);
-        }
-
-        for (int i = 0; i < tanks.size(); i++) {
-            tanks.get(i).paint(graphics);
-        }
-
-        for (int i = 0; i < explodes.size(); i++) {
-            explodes.get(i).paint(graphics);
-        }
-
-        //collision detect
-
-        for (int i = 0; i < bullets.size(); i++) {
-            for (int j = 0; j < tanks.size(); j++) {
-                bullets.get(i).collideWith(tanks.get(j));
-            }
-        }
+        gm.paint(graphics);
     }
 
     class MyKeyListener extends KeyAdapter {
@@ -140,7 +108,7 @@ public class TankFrame extends Frame {
                     bD = false;
                     break;
                 case KeyEvent.VK_CONTROL:
-                    myTank.fire();
+                    gm.getMainTank().fire();
                     break;
                 default:
                     break;
@@ -149,7 +117,10 @@ public class TankFrame extends Frame {
             setMainTankDir();
         }
 
+        //设置主战坦克
         private void setMainTankDir() {
+            Tank myTank = gm.getMainTank();
+
             if (!bL && !bU && !bR && !bD) {
                 myTank.setMoving(false);
             } else {
