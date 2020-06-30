@@ -1,11 +1,12 @@
 package com.tank;
 
+import com.tank.abstractfactory.BaseTank;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
-public class Tank {
+public class Tank extends BaseTank {
 
     public Rectangle rect = new Rectangle();
     private int x, y;

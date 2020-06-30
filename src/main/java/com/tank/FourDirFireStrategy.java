@@ -14,7 +14,7 @@ public class FourDirFireStrategy implements FireStrategy {
         }
 
         if (tank.getGroup() == Group.GOOD) {
-            new Thread(() -> new Audio("audio/tank_fire.wav").loop()).start();
+            //new Thread(() -> new Audio("audio/tank_fire.wav").loop()).start();
         }
     }
 }

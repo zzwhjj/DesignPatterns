@@ -1,10 +1,11 @@
 package com.tank;
 
+import com.tank.abstractfactory.BaseBullet;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class Bullet {
+public class Bullet extends BaseBullet {
 
     private static final int SPEED = 10;
     public static int WIDTH = ResourceMgr.bulletD.getWidth();
@@ -34,6 +35,7 @@ public class Bullet {
         tf.bullets.add(this);
     }
 
+    @Override
     public void paint(Graphics graphics) {
         if (!living) {
             tf.bullets.remove(this);
@@ -98,7 +100,7 @@ public class Bullet {
 
             int ex = tank.getX() + Tank.WIDTH / 2 - Explode.WIDTH / 2;
             int ey = tank.getY() + Tank.HEIGHT / 2 - Explode.HEIGHT / 2;
-            tf.explodes.add(new Explode(ex, ey, tf));
+            tf.explodes.add(tf.gf.createExplode(ex, ey, tf));
         }
     }
 

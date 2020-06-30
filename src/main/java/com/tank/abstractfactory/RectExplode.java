@@ -1,9 +1,11 @@
-package com.tank;
+package com.tank.abstractfactory;
 
-import com.tank.abstractfactory.BaseExplode;
+import com.tank.ResourceMgr;
+import com.tank.TankFrame;
+import java.awt.Color;
 import java.awt.Graphics;
 
-public class Explode extends BaseExplode {
+public class RectExplode extends BaseExplode {
 
     private int x, y;
     public static int WIDTH = ResourceMgr.explodes[0].getWidth();
@@ -12,7 +14,7 @@ public class Explode extends BaseExplode {
     private TankFrame tf = null;
     private int step = 0;
 
-    public Explode(int x, int y, TankFrame tf) {
+    public RectExplode(int x, int y, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.tf = tf;
@@ -22,10 +24,15 @@ public class Explode extends BaseExplode {
 
     @Override
     public void paint(Graphics graphics) {
-        graphics.drawImage(ResourceMgr.explodes[step++], x, y, null);
-        if (step >= ResourceMgr.explodes.length) {
+        //graphics.drawImage(ResourceMgr.explodes[step++], x, y, null);
+        Color color = graphics.getColor();
+        graphics.setColor(Color.RED);
+        graphics.fillRect(x, y, 10 * step, 10 * step);
+        step++;
+        if (step >= 5) {
             tf.explodes.remove(this);
         }
+        graphics.setColor(color);
     }
 
     public int getX() {
