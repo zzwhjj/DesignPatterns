@@ -1,4 +1,9 @@
-package com.tank;
+package com.design.strategy;
+
+import com.tank.Audio;
+import com.tank.Bullet;
+import com.tank.Group;
+import com.tank.Tank;
 
 //默认的开火方法
 public class DefaultFireStrategy implements FireStrategy {

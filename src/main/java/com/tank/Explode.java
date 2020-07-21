@@ -3,7 +3,7 @@ package com.tank;
 import com.tank.abstractfactory.BaseExplode;
 import java.awt.Graphics;
 
-public class Explode extends BaseExplode {
+public class Explode extends GameObject {
 
     private int x, y;
     public static int WIDTH = ResourceMgr.explodes[0].getWidth();
@@ -17,14 +17,14 @@ public class Explode extends BaseExplode {
         this.y = y;
         this.gm = gm;
 
-        new Thread(()->new Audio("audio/explode.wav").play()).start();
+        //new Thread(()->new Audio("audio/explode.wav").play()).start();
     }
 
     @Override
     public void paint(Graphics graphics) {
         graphics.drawImage(ResourceMgr.explodes[step++], x, y, null);
         if (step >= ResourceMgr.explodes.length) {
-            gm.explodes.remove(this);
+            gm.remove(this);
         }
     }
 

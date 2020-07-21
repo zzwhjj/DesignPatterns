@@ -1,12 +1,11 @@
 package com.tank;
 
-import com.tank.abstractfactory.BaseTank;
+import com.design.strategy.FireStrategy;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
-public class Tank extends BaseTank {
+public class Tank extends GameObject {
 
     public Rectangle rect = new Rectangle();
     private int x, y;
@@ -58,7 +57,7 @@ public class Tank extends BaseTank {
 
     public void paint(Graphics graphics) {
         if (!living) {
-            gm.tanks.remove(this);
+            gm.remove(this);
         }
 
         switch (dir) {
@@ -90,6 +89,8 @@ public class Tank extends BaseTank {
     }
 
     private void move() {
+        //oldX = x;
+        //oldY = y;
         if (!moving) {
             return;
         }
@@ -200,5 +201,13 @@ public class Tank extends BaseTank {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public Rectangle getRect() {
+        return rect;
+    }
+
+    public void stop() {
+        moving = false;
     }
 }

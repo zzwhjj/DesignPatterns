@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class Bullet extends BaseBullet {
+public class Bullet extends GameObject {
 
     private static final int SPEED = 10;
     public static int WIDTH = ResourceMgr.bulletD.getWidth();
@@ -16,6 +16,7 @@ public class Bullet extends BaseBullet {
 
     private int x, y;
     private Dir dir;
+
     private Group group = Group.BAD;
 
     Rectangle rect = new Rectangle();
@@ -33,13 +34,21 @@ public class Bullet extends BaseBullet {
         rect.height = HEIGHT;
 
         //子弹创建后，加入到队列中
-        gm.bullets.add(this);
+        gm.add(this);
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     @Override
     public void paint(Graphics graphics) {
         if (!living) {
-            gm.bullets.remove(this);
+            gm.remove(this);
         }
 
         switch (dir) {
@@ -90,9 +99,9 @@ public class Bullet extends BaseBullet {
         }
     }
 
-    public void collideWith(Tank tank) {
+    public boolean collideWith(Tank tank) {
         if (this.group == tank.getGroup()) {
-            return;
+            return false;
         }
 
         if (rect.intersects(tank.rect)) {
@@ -101,8 +110,11 @@ public class Bullet extends BaseBullet {
 
             int ex = tank.getX() + Tank.WIDTH / 2 - Explode.WIDTH / 2;
             int ey = tank.getY() + Tank.HEIGHT / 2 - Explode.HEIGHT / 2;
-            gm.explodes.add(new Explode(ex, ey, gm));
+            gm.add(new Explode(ex, ey, gm));
+
+            return true;
         }
+        return false;
     }
 
     private void die() {

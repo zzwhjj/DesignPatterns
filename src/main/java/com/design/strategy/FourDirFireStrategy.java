@@ -1,4 +1,10 @@
-package com.tank;
+package com.design.strategy;
+
+import com.tank.Audio;
+import com.tank.Bullet;
+import com.tank.Dir;
+import com.tank.Group;
+import com.tank.Tank;
 
 //四个方向的开火方法
 public class FourDirFireStrategy implements FireStrategy {
