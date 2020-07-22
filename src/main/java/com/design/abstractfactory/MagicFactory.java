@@ -6,7 +6,7 @@ package com.design.abstractfactory;
 public class MagicFactory extends AbastractFactory {
 
     @Override
-    Food createFood() {
+    protected Food createFood() {
         return new Mush();
     }
 

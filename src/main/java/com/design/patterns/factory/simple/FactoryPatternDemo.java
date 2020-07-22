@@ -1,11 +1,11 @@
-package com.design.patterns.factory;
+package com.design.patterns.factory.simple;
 
 //使用该工厂，通过传递类型信息来获取实体类的对象
 public class FactoryPatternDemo {
 
     public static void main(String[] args) {
         ShapeFactory factory = new ShapeFactory();
-        
+
         Shape shape1 = factory.getShape("circle");
         shape1.draw();
 

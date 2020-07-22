@@ -1,4 +1,4 @@
-package com.design.patterns.factory;
+package com.design.patterns.factory.simple;
 
 /**
  * 创建一个工厂，生成基于给定信息的实体类的对象

@@ -6,7 +6,7 @@ package com.design.abstractfactory;
 public class ModernFactory extends AbastractFactory{
 
     @Override
-    Food createFood() {
+    protected Food createFood() {
         return new Bread();
     }
 
