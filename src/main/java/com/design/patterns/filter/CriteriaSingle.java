@@ -7,7 +7,7 @@ public class CriteriaSingle implements Criteria{
 
     @Override
     public List<Person> meetCriterial(List<Person> persons) {
-        List<Person> singlePersons = new ArrayList<>();
+        List<Person> singlePersons = new ArrayList<Person>();
         for (Person person : persons) {
             if (person.getMaritalStatus().equalsIgnoreCase("single")) {
                 singlePersons.add(person);
