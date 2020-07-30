@@ -7,7 +7,7 @@ public class CriterialFemale implements Criteria {
 
     @Override
     public List<Person> meetCriterial(List<Person> persons) {
-        List<Person> femalePersons = new ArrayList<>();
+        List<Person> femalePersons = new ArrayList<Person>();
         for (Person person : persons) {
             if (person.getGender().equalsIgnoreCase("female")) {
                 femalePersons.add(person);
