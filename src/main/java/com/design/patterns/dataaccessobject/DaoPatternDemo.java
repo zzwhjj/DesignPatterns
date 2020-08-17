@@ -8,7 +8,7 @@ public class DaoPatternDemo {
         for (Student student : studentDao.getAllStudents()) {
             System.out.println("Student: [RooNo : " + student.getRollNo() + ", Name: " + student.getName() + " ]");
         }
-        
+
         Student student = studentDao.getAllStudents().get(0);
         student.setName("Michael");
         studentDao.updateStudent(student);
